@@ -1,9 +1,12 @@
 import * as chai from 'chai'
+import * as sinon from 'sinon'
+import * as sinonChai from 'sinon-chai'
+chai.use(sinonChai)
 
 const aseert = chai.assert
 import Promise from '../src/promise'
 
-describe("Promis", () => {
+describe("Promise", () => {
   it("是一个类", () => {
     aseert.isFunction(Promise)
     aseert.isObject(Promise.prototype)
@@ -27,12 +30,9 @@ describe("Promis", () => {
     })
   })
   it('new Promis(fn) 中的 fn 会立即执行', () => {
-    let status = false
-    new Promise(() => {
-      status = true
-    })
-    // @ts-ignore
-    aseert(status === true)
+    const fn = sinon.fake()
+    new Promise(fn)
+    aseert(fn.called)
   })
   it('new Promise(fn) 会生成一个对象，里面有一个 then 方法', () => {
     aseert(new Promise(() => { }).then)
@@ -45,19 +45,16 @@ describe("Promis", () => {
     })
   })
   it("promise.then(success) 中的 success 会在 resolve 之后调用", done => {
-    let status = false
+    const success = sinon.fake()
     const promise = new Promise((resolve, reject) => {
-      aseert.isFalse(status)
+      aseert.isFalse(success.called)
       resolve()
       setTimeout(() => {
-        aseert.isTrue(status)
+        aseert.isTrue(success.called)
         done()
       }, 0)
-
     })
 
-    promise.then(() => {
-      status = true
-    }, () => { })
+    promise.then(success, () => { })
   })
 })
