@@ -1,24 +1,42 @@
 class PromiseT {
-  success = null
-  fail = null
-  resolve() {
+  state = null
+  callList = []
+  resolve(result) {
+    if (this.state !== "pending") return
+    this.state = "fulfilled"
     setTimeout(() => {
-      this.success()
+      this.callList.forEach(handle => {
+        if (typeof handle[0] === "function") {
+          handle[0].call(undefined, result)
+        }
+      });
     }, 0
     )
   }
-  reject() {
-    this.fail()
+  reject(reason) {
+    if (this.state !== "pending") return
+    this.state = "rejected"
+    setTimeout(() => {
+      this.callList.forEach(handle => {
+        if (typeof handle[1] === "function") {
+          handle[1].call(undefined, reason)
+        }
+      });
+    }, 0)
   }
   constructor(fn) {
     if (typeof fn !== "function") {
       throw new Error("只接收函数")
     }
-    fn(this.resolve.bind(this), this.resolve.bind(this))
+    this.state = "pending"
+    fn(this.resolve.bind(this), this.reject.bind(this))
   }
-  then(success, fail) {
-    this.success = success
-    this.fail = fail
+  then(onFulfilled?, onRejected?) {
+    const handle = []
+    handle[0] = onFulfilled
+    handle[1] = onRejected
+    this.callList.push(handle)
+    return undefined
   }
 }
 
