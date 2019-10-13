@@ -12,3 +12,10 @@
 mocha不支持ts，利用ts提供的模块进行测试
 `mocha -r ts-node/register test/index.ts`
 运行命令行`yarn test`
+
+关于 sinon 测试函数的使用:
+
+- `const fn = sinon.fake()` 制造一个假函数
+- `fn.called` 函数是否调用，返回布尔值
+- `fn.calledOnce` 函数仅调用一次
+- `fn.calledAfter(f2)` 函数在 f2 调用之后才被调用
