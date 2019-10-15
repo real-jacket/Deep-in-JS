@@ -11,7 +11,7 @@ describe("Promise", () => {
     assert.isFunction(Promise)
     assert.isObject(Promise.prototype)
   })
-  it("new Prmosie(fn) 必须接收一个函数", () => {
+  it("new Promise(fn) 必须接收一个函数", () => {
     assert.throw(() => {
       //@ts-ignore
       new Promise()
@@ -29,7 +29,7 @@ describe("Promise", () => {
       new Promise([])
     })
   })
-  it('new Promis(fn) 中的 fn 会立即执行', () => {
+  it('new Promise(fn) 中的 fn 会立即执行', () => {
     const fn = sinon.fake()
     new Promise(fn)
     assert(fn.called)
