@@ -44,6 +44,11 @@
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-13.5.0.tgz?cache=0&sync_timestamp=1579806060938&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-13.5.0.tgz#4e498dbf355795a611a87ae5ef811a8660d42662"
   integrity sha1-TkmNvzVXlaYRqHrl74EahmDUJmI=
 
+"@types/node@^13.5.0":
+  version "13.5.0"
+  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-13.5.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-13.5.0.tgz#4e498dbf355795a611a87ae5ef811a8660d42662"
+  integrity sha1-TkmNvzVXlaYRqHrl74EahmDUJmI=
+
 "@types/range-parser@*":
   version "1.2.3"
   resolved "https://registry.npm.taobao.org/@types/range-parser/download/@types/range-parser-1.2.3.tgz?cache=0&sync_timestamp=1572463876708&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Frange-parser%2Fdownload%2F%40types%2Frange-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
