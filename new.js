@@ -51,6 +51,10 @@ function temp() { }
 temp.prototype = Animal.prototype
 Dog.prototype = new temp()
 
+// 上述代码可以修改一下
+
+// Dog.prototype.__proto__ = Animal.prototype
+
 Dog.prototype.constructor = Dog
 Dog.prototype.say = function () { 
     console.log('汪')
