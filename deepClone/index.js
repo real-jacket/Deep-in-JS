@@ -1,47 +1,32 @@
-function deepClone(source) {
-  // 避免循环引用
-  const cache = []
-
-  function findCache(source) {
-    for (let i = 0; i < cache.length; i++) {
-      if (cache[i][0] == source) {
-        return cache[i][1]
-      }
-    }
-    return undefined
-  }
-
+function deepClone(source,map = new WeakMap()) {
   if (source instanceof Object) {
     let dist
     //  对四种类型进行判断
-    let cachedDist = findCache(source);
-    if (cachedDist) {
-      return cachedDist
-    } else {
-      if (source instanceof Array) {
-        dist = new Array()
-      } else if (source instanceof Function) {
-        dist = function () {
-          return source.apply(this,arguments)
-        }
-        console.log(dist.name)
-        dist.name = dist
-      } else if (source instanceof Date) {
-        dist = new Date(source)
-      } else if (source instanceof RegExp) {
-        dist = new RegExp(source.source,source.flags)
-      }else {
-        dist = new Object()
-      }
+    if (map.get(source)) {
+      return map.get(source);
     }
-
-    cache.push([source,dist])
+    
+    if (source instanceof Array) {
+      dist = new Array()
+    } else if (source instanceof Function) {
+      dist = function () {
+        return source.apply(this,arguments)
+      }
+      dist.name = dist
+    } else if (source instanceof Date) {
+      dist = new Date(source)
+    } else if (source instanceof RegExp) {
+      dist = new RegExp(source.source,source.flags)
+    }else {
+      dist = new Object()
+    }
+    map.set(source, dist);
 
     // 进行遍历对象 copy
     for (const key in source) {
       if (source.hasOwnProperty(key)) {
-        // 递归遍历
-        dist[key] = deepClone(source[key])
+        // 递归遍历,传入 map ，保证同一个
+        dist[key] = deepClone(source[key],map)
       }
     }
 
@@ -52,7 +37,6 @@ function deepClone(source) {
 }
 
 const a = {
-  a: '1',
   name: function () {
     console.log('name')
   },
@@ -60,11 +44,9 @@ const a = {
   array: [1, 2, 3],
 }
 // 环，存在爆栈，暂不考虑
-// a.a = a
+a.a = a
 
 const b = deepClone(a)
 
 console.log('a:', a)
 console.log('b:', b)
-
-console.log(b.name.name)
