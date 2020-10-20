@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash-Router</title>
+</head>
+
+<body>
+    <ul>
+        <!-- 定义路由 -->
+        <li><a href="#/home?a=b">home</a></li>
+        <li><a href="#/about">about</a></li>
+    </ul>
+    <!-- 渲染路由对应的UI -->
+    <div id="routerView"></div>
+</body>
+<script>
+    const view = document.querySelector('#routerView')
+    window.addEventListener('hashchange', function (e) {
+        view.textContent = location.hash
+    }, false);
+    window.addEventListener('DOMContentLoaded', () => {
+        if (!location.hash) {//如果不存在hash值，那么重定向到#/
+            location.hash = "/"
+        } else {//如果存在hash值，那就渲染对应UI
+            let hash = location.hash;
+            view.textContent = hash
+        }
+    })
+</script>
+
+</html>

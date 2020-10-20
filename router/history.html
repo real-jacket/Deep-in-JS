@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash-Router</title>
+</head>
+
+<body>
+    <ul>
+        <!-- 定义路由 -->
+        <li><a href="/home?a=b">home</a></li>
+        <li><a href="/about">about</a></li>
+    </ul>
+    <!-- 渲染路由对应的UI -->
+    <div id="routerView"></div>
+</body>
+<script>
+    const view = document.querySelector('#routerView')
+    window.addEventListener('DOMContentLoaded', onLoad)
+
+    // 注意：调用history.pushState()或者history.replaceState()不会触发popstate事件. 
+    // popstate事件只会在浏览器某些行为下触发, 
+    // 比如点击后退、前进按钮(或者在JavaScript中调用history.back()、history.forward()、history.go()方法)，此外，a 标签的锚点也会触发该事件.
+    // 当网页加载时,各浏览器对popstate事件是否触发有不同的表现,Chrome 和 Safari会触发popstate事件, 而Firefox不会.
+
+    // 解决方案：自己实现popstate，与history api ，通过发布订阅模式
+    window.addEventListener('popstate', (event) => {
+        console.log(event)
+        // view.innerHTML = location.pathname
+    })
+    function onLoad() {
+        view.innerHTML = location.pathname
+        var linkList = document.querySelectorAll('a[href]')
+        console.log(linkList)
+        linkList.forEach(el => el.addEventListener('click', function (e) {
+            e.preventDefault()
+            const state = { name: el.getAttribute('href') }
+            history.pushState(state, '', el.getAttribute('href'))
+            view.innerHTML = location.pathname
+        }))
+    }
+
+</script>
+
+</html>
