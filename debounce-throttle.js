@@ -69,19 +69,21 @@ const a = Debounce(
 // 普通版
 
 const throttle = function (fn, wait) {
-	let timer, previous
+	let timer, previous, result
 	return function (...args) {
 		const context = this
 		const now = +new Date()
 		if (previous && now < previous + wait) {
-			if (timer) clearTimeout(timer)
+			clearTimeout(timer)
 			timer = setTimeout(() => {
-				fn.apply(context, args)
+				previous = now
+				result = fn.apply(context, args)
 			}, wait)
 		} else {
 			previous = now
-			fn.apply(context, args)
+			result = fn.apply(context, args)
 		}
+		return result
 	}
 }
 
