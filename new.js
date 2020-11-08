@@ -167,3 +167,25 @@ function prototype(child,parent) {
     prototype.constructor = child
     child.prototype = prototype
 }
+
+
+/************ 实现 instance ************/
+/**
+ * 
+ * 实现 instance 的一个重要公式时原型链公式
+ * 
+ * Child.prototype.__proto__ === Parent.Proto
+ * 
+ * 
+ */
+
+function instance(child, parent) {
+    let prototype = child.__proto__
+    // 新增构造函数的判断 如 People 在 Student 的原型链上
+    if (child.prototype) prototype = child.prototype.__proto__
+    while (prototype) {
+        if (prototype === parent.prototype) return true
+        prototype = prototype.__proto__
+    }
+    return false
+}
