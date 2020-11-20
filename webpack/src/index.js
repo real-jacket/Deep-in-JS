@@ -1,9 +1,4 @@
-// import _ from 'lodash';
-import sleep from './utils/sleep.js';
-import content from './utils/lgc.lgc';
+import sayHello from './bundler-utils/say-hello.js';
+import message from './bundler-utils/message.js';
 
-console.log('content', content);
-console.log('time1', Date.now());
-sleep().then(() => {
-    console.log('time2', Date.now());
-});
+sayHello(message);

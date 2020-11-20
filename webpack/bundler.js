@@ -69,5 +69,33 @@ const makeDependenciesGraph = entry => {
     return graph
 }
 
-const graphInfo = makeDependenciesGraph('./src/index.js')
-console.log('graphInfo', graphInfo)
+// const graphInfo = makeDependenciesGraph('./src/index.js')
+// console.log('graphInfo', graphInfo)
+
+
+const generateCode = entry => {
+    const graph = makeDependenciesGraph(entry)
+    // 1、通过闭包执行，避免污染全局环境
+    // 2、定义require方法，并立即执行，传入entry字符串
+    const finalCode = `
+        (function (graph) {
+            function require(module) {
+                function localRequire(relativePath) {
+                    return require(graph[module].dependencies[relativePath])
+                }
+                var exports ={};
+                (function(require,exports,code) {
+                    eval(code)
+                })(localRequire,exports,graph[module].code);
+                return exports;
+            }
+            return require('${entry}')
+        })(${JSON.stringify(graph)})
+    `
+    return finalCode
+}
+
+const code = generateCode('./src/index.js')
+console.log('code', code)
+
+eval(code)
