@@ -1,7 +1,9 @@
-const x = 'this is a demo of ast babel test'
+// import _ from 'lodash';
+import sleep from './utils/sleep.js';
+import content from './utils/lgc.lgc';
 
-const a = () => {
-    console.log(x)
-}
-
-a()
+console.log('content', content);
+console.log('time1', Date.now());
+sleep().then(() => {
+    console.log('time2', Date.now());
+});

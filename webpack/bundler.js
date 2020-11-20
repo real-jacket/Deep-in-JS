@@ -38,5 +38,36 @@ const moduleAnalyse = filename => {
     }
 }
 
-const moduleInfo = moduleAnalyse('./src/index.js')
-console.log('moduleInfo', moduleInfo)
+// const moduleInfo = moduleAnalyse('./src/index.js')
+// console.log('moduleInfo', moduleInfo)
+
+const makeDependenciesGraph = entry => {
+    // 先从入口处拿到模块分析对象
+    const entryModule = moduleAnalyse(entry)
+
+    // 将通过递归遍历，把所有的模块依赖收集到这里
+    const graphArray = [entryModule]
+    for (let i = 0; i < graphArray.length; i++) {
+        const item = graphArray[i]
+        const { dependencies } = item
+        if (Object.keys(dependencies).length > 0) {
+            for (let j in dependencies) {
+                // 把得到的子依赖添加到 graphArray,长度发生变化，for 循环继续，形成了递归
+                graphArray.push(moduleAnalyse(dependencies[j]))
+            }
+        }
+    }
+    // 数组转化成对象 方便后续操作
+    const graph = {}
+    graphArray.forEach(item => {
+        graph[item.filename] = {
+            dependencies: item.dependencies,
+            code: item.code
+        }
+    })
+
+    return graph
+}
+
+const graphInfo = makeDependenciesGraph('./src/index.js')
+console.log('graphInfo', graphInfo)
