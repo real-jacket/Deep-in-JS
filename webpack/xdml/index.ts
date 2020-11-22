@@ -17,6 +17,11 @@ analysisModule('./preject1/index.js')
 console.log(depRelation)
 
 function analysisModule(filepath: string): void {
+	if (Object.keys(depRelation).includes(filepath)) {
+		console.log(`duplicated dependency: ${filepath}`)
+		return
+	}
+
 	const absolutePath = path.resolve(__dirname, filepath)
 	const code = fs.readFileSync(absolutePath, 'utf-8').toString()
 
