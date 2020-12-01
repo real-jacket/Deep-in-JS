@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li id="x1">1</li>
+        <li id="x2">2</li>
+        <li id="x3">3</li>
+        <li id="x4">4</li>
+    </ul>
+    <button id="change">change position</button>
+</body>
+<script>
+    /**
+     * 
+     * 模拟 react 节点标记 移动状态时的 dom 操作，
+     * 移动都是往后移动，所以避免把最后的节点往前移
+     * 
+    */
+    // 1234 old
+    // 4123 new
+    // 4 第一次 oldindex = 3,lastindex = 0, 不移动，lastIndex = 3
+    // 1 第二次 oldindex = 0,lastindex = 3, 移动,
+    // 2 第三次 oldindex = 1,lastIndex = 3, 移动,
+    // 3 第四次 oldindex = 2,lastIndex = 3，移动
+    const button = document.querySelector('#change')
+    const parent = document.querySelector('ul')
+    const children = parent.children
+
+    function q(id) {
+        return document.querySelector(`#x${id + 1}`)
+    }
+
+    let index = 0
+    let target = 3
+
+
+    button.addEventListener('click', function () {
+        if (index >= target) return
+        parent.insertBefore(q(index), children[target].nextSibling)
+        index++
+    })
+
+</script>
+
+</html>
