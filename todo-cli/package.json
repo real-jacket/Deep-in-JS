@@ -1,0 +1,12 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "todo": "./bin/todo.js"
+  },
+  "dependencies": {
+    "commander": "^6.2.0"
+  }
+}
