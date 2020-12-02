@@ -1,0 +1,13 @@
+{
+  "name": "ket-cli",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "ket-cli": "./bin/ket-cli",
+    "ket-cli-init": "./bin/ket-cli-init"
+  },
+  "dependencies": {
+    "commander": "^6.2.0"
+  }
+}

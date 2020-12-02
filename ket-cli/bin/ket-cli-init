@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+const commander = require('commander')
+const program = new commander.Command();
+
+program
+    .usage('<project-name>')
+    .parse(process.argv)
+
+const projectName = program.args[0]
+
+console.log(projectName)
