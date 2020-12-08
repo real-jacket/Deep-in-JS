@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import ReactDom from 'react-dom'
 import Cat from './components/Cat.js'
 
+import hello from './hello.hello'
+console.log('hello content:', hello)
+
+import helloMd from './hello.md'
+console.log(helloMd)
+
 function App() {
     const [count, setCount] = useState(0);
     return (
@@ -11,6 +17,7 @@ function App() {
                 Click me
             </button>
             <Cat />
+            <div dangerouslySetInnerHTML={{ __html: helloMd }}></div>
         </div>
     );
 }

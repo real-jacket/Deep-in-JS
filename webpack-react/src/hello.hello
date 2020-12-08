@@ -1,0 +1,3 @@
+module.exports = {
+    file: 'hello,this is a test of hello'
+}

@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const path = require('path')
@@ -5,11 +6,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // 分析 bundle 打包速度的
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-const smp = new SpeedMeasurePlugin();
+// const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+// const smp = new SpeedMeasurePlugin();
 
 // 分析 打包内容的
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+// 手写的 plugin 
+const HelloWordPlugin = require('../plugins/Hello')
+const FileListPlugin = require('../plugins/FileList')
 
 
 const webpackConfig = merge(common, {
@@ -80,8 +85,22 @@ const webpackConfig = merge(common, {
                     "css-loader",
                     "postcss-loader",
                 ]
+            },
+            // 自定义 loader 
+            {
+                test: /\.hello$/i,
+                exclude: /node_modules/,
+                use: ['hello-loader']
+            },
+            {
+                test: /\.md$/i,
+                exclude: /node_modules/,
+                use: ['md-loader']
             }
         ]
+    },
+    resolveLoader: {
+        modules: ['node_modules', 'loaders']
     },
     plugins: [
         // new BundleAnalyzerPlugin(),
@@ -89,7 +108,9 @@ const webpackConfig = merge(common, {
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css'
         }),
-        new webpack.optimize.ModuleConcatenationPlugin()
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new HelloWordPlugin(),
+        new FileListPlugin()
     ],
     output: {
         filename: '[name].[contenthash].js',
