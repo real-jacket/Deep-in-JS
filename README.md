@@ -27,7 +27,7 @@
 - [x] promise 的相关 API
   - [x] promise.all 实现
   - [x] promise.any 实现
-  - [x] promise.settle
+  - [x] promise.settle 实现
 
 ### 常见框架原理实现
 
@@ -45,12 +45,20 @@
 
 - [x] promise 实现一个限流器
 
+## 收集的一些场景设计面试题
+
+这部分对应题目均在 `interview-question` 目录下
+
+- 字节
+  - [x] 返回服务器计算求和所花费的最事件
+
 ## 未来计划
 
 未来除来拓宽上述相关之外，还会加大在 Node 端的实现，比如下述：
 
 - [ ] next ssr 项目最佳实践
 - [ ] 大文件上传
+- [x] 文件流转存服务（node-file-stream-archived）
 - [ ] 文件系统，实现一个 tree 命令
 - [ ] 实现一个完整的 CLI
 - [ ] 实现一个 CI/CD 服务器

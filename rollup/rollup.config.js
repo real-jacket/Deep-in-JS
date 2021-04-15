@@ -2,6 +2,7 @@ import json from 'rollup-plugin-json';
 import * as path from 'path';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
+import myHello from './plugin/rollup-plugin-my-hello'
 
 export default {
   input: {
@@ -22,12 +23,12 @@ export default {
       ],
     },
     sourcemap: true,
-    plugins: [terser()],
+    // plugins: [terser()],
     // paths: {
     //   'lodash-es':
     //     'https://cdn.jsdelivr.net/npm/lodash-es@4.17.20/lodash.min.js',
     // },
   },
-  plugins: [json(), nodeResolve()],
+  plugins: [json(), nodeResolve(), myHello()],
   // external: ['lodash-es'],
 };

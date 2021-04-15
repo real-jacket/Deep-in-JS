@@ -1,0 +1,3 @@
+[submodule "node-file-stream-archived/file-upload-example-server"]
+	path = node-file-stream-archived/file-upload-example-server
+	url = git@github.com:real-jacket/file-upload-example-server.git
