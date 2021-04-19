@@ -15,9 +15,11 @@ git submodule update
 
 ## 运行
 
-服务端：
+服务端，在拉取 git 子模块后进行
 
 ```bash
+cd file-upload-example-server
+
 yarn
 
 yarn start
