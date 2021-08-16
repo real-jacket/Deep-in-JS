@@ -5,7 +5,7 @@
   "author": "kete <jack.ke@ximalaya.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "lib/ui-common.js",
+  "main": "lib/ui-common",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
