@@ -1,0 +1,22 @@
+{
+  "name": "@ke/math",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index",
+  "types": "lib/index",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "yarn run clean && yarn run compile",
+    "compile": "tsc -p tsconfig.build.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ke/add": "workspace:../add",
+    "@ke/reduce": "workspace:../reduce"
+  }
+}

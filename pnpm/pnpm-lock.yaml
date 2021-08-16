@@ -1,0 +1,60 @@
+lockfileVersion: 5.3
+
+importers:
+
+  .:
+    specifiers:
+      '@types/node': ^16.6.1
+      typescript: ^4.3.5
+    dependencies:
+      typescript: 4.3.5
+    devDependencies:
+      '@types/node': 16.6.1
+
+  packages/add:
+    specifiers:
+      '@types/lodash': ^4.14.172
+      lodash: ^4.17.21
+    dependencies:
+      lodash: 4.17.21
+    devDependencies:
+      '@types/lodash': 4.14.172
+
+  packages/math:
+    specifiers:
+      '@ke/add': workspace:../add
+      '@ke/reduce': workspace:../reduce
+    dependencies:
+      '@ke/add': link:../add
+      '@ke/reduce': link:../reduce
+
+  packages/reduce:
+    specifiers:
+      '@types/lodash': ^4.14.172
+      lodash: ^4.17.21
+      typescript: ^4.3.5
+    dependencies:
+      lodash: 4.17.21
+      typescript: 4.3.5
+    devDependencies:
+      '@types/lodash': 4.14.172
+
+packages:
+
+  /@types/lodash/4.14.172:
+    resolution: {integrity: sha1-qtd0wo57/Xpn3iVAjgPuWow9Aoo=, tarball: https://r.cnpmjs.org/@types/lodash/download/@types/lodash-4.14.172.tgz}
+    dev: true
+
+  /@types/node/16.6.1:
+    resolution: {integrity: sha1-ruYse5ZvVfxmx7bfodWNsqYW2mE=, tarball: https://r.cnpmjs.org/@types/node/download/@types/node-16.6.1.tgz}
+    dev: true
+
+  /lodash/4.17.21:
+    resolution: {integrity: sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=, tarball: https://r.cnpmjs.org/lodash/download/lodash-4.17.21.tgz}
+    dev: false
+
+  /typescript/4.3.5:
+    resolution: {integrity: sha1-TRw3zBbok5c8RaBohrcRMjTxGfQ=, tarball: https://r.cnpmjs.org/typescript/download/typescript-4.3.5.tgz}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: false

@@ -1,0 +1,25 @@
+{
+  "name": "@ke/reduce",
+  "version": "1.0.0",
+  "main": "lib/index",
+  "types": "lib/index",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "yarn run clean && yarn run compile",
+    "compile": "tsc -p tsconfig.build.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/lodash": "^4.14.172"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "typescript": "^4.3.5"
+  }
+}
