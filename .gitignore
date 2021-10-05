@@ -4,6 +4,7 @@
 */build
 .DS_Store
 */.DS_Store
+*/.yarn
 
 node-file-stream-archived/null
 node-file-stream-archived/yarn.lock

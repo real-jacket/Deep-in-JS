@@ -202,7 +202,20 @@ yarn add -W -D commitizen
 yarn remove -W commitizen
 ```
 
-3. 增加模块包到 packages 中指定项目
+3. 增加模块包到所有 packages 项目,需要使用安装 yarn 插件
+
+```bash
+# 安装插件
+yarn plugin import workspace-tools
+
+# 所有的包安装 axios
+yarn workspaces add axios
+
+# 所有的包移除 axios
+yarn workspaces remove axios
+```
+
+4. 增加模块包到 packages 中指定项目
 
 ```bash
 # packageA 安装 axios
@@ -212,7 +225,7 @@ yarn workspace packageA add axios
 yarn workspace packageA remove axios
 ```
 
-4. 执行命令
+5. 执行命令
 
 - 在 packages 中对应包下的执行任意命令
 
