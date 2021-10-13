@@ -6,10 +6,12 @@
   ],
   "scripts": {
     "web": "lerna exec --scope ui-example -- yarn start",
-    "clean": "lerna clean && rm -rf node_modules"
+    "clean": "lerna clean && rm -rf node_modules",
+    "test": "ts-node ./scripts/test.ts"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "ts-node": "^10.2.1"
   },
   "dependencies": {
     "@types/jest": "^26.0.22",
