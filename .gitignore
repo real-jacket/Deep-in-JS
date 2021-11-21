@@ -5,6 +5,8 @@
 .DS_Store
 */.DS_Store
 */.yarn
+.history
+*/.history
 
 node-file-stream-archived/null
 node-file-stream-archived/yarn.lock
