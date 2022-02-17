@@ -1,0 +1,17 @@
+{
+  "name": "mini-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && serve -s ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^13.0.2",
+    "typescript": "^4.5.5"
+  }
+}
