@@ -3,8 +3,7 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "usage",
-        "corejs": "3.6.5",
+        "targets": "> 0.25%, not dead",
         "browserslistEnv": "> 0.25%, not dead"
       }
     ],
@@ -17,16 +16,16 @@
     ]
   ],
   "plugins": [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": {
-          "version": 3,
-          "proposals": true
-        },
-        "useESModules": true
-      }
-    ],
+    // [
+    //   "@babel/plugin-transform-runtime",
+    //   {
+    //     "corejs": {
+    //       "version": 3,
+    //       "proposals": true
+    //     },
+    //     "useESModules": true
+    //   }
+    // ],
     "@babel/plugin-transform-react-jsx"
   ],
   "ignore": ["src/@types/*"]

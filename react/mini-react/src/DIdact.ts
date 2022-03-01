@@ -1,10 +1,6 @@
 const TEXT_ELEMENT = 'TEXT_ELEMENT';
 
-export function createElement(
-  type: string,
-  props: Object,
-  ...children: JSXElement[]
-) {
+function createElement(type: string, props: Object, ...children: JSXElement[]) {
   return {
     type,
     props: {
@@ -14,7 +10,7 @@ export function createElement(
   };
 }
 
-export function createTextElement(text: string): JSXElement {
+function createTextElement(text: string): JSXElement {
   return {
     type: TEXT_ELEMENT,
     props: {
@@ -23,3 +19,8 @@ export function createTextElement(text: string): JSXElement {
     },
   };
 }
+
+const Didact = {
+  createElement,
+  createTextElement,
+};

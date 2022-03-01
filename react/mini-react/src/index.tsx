@@ -1,5 +1,3 @@
-import * as Didact from './DIdact';
-
 /** @jsx Didact.createElement */
 const element = (
   <div id="foo">
