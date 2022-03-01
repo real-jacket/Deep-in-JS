@@ -5,7 +5,9 @@ function createElement(type: string, props: Object, ...children: JSXElement[]) {
     type,
     props: {
       ...props,
-      children,
+      children: children.map((child) =>
+        typeof child === 'object' ? child : createTextElement(child)
+      ),
     },
   };
 }
@@ -20,7 +22,31 @@ function createTextElement(text: string): JSXElement {
   };
 }
 
+function render(element: JSXElement, container: HTMLElement) {
+  const dom =
+    element.type === TEXT_ELEMENT
+      ? document.createTextNode('')
+      : document.createElement(element.type);
+
+  if (typeof dom !== 'string') {
+    const isProperty = (key: string) => key !== 'children';
+
+    Object.keys(element.props)
+      .filter(isProperty)
+      .forEach((name) => {
+        dom[name] = element.props[name];
+      });
+
+    element.props.children.forEach((child) => {
+      render(child, dom);
+    });
+  }
+
+  container.appendChild(dom);
+}
+
 const Didact = {
   createElement,
   createTextElement,
+  render,
 };
