@@ -9,7 +9,7 @@ const element = (
   <div id="foo">
     <App name="bar" />
     <a>bar </a>
-    <b />
+    <span>yyy</span>
   </div>
 );
 const container = document.getElementById('root')!;

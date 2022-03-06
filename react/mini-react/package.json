@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel src --out-dir build -x \".ts\" -x \".tsx\" && serve -s  ."
+    "start": "babel src -w --out-dir build -x \".ts\" -x \".tsx\" & serve -s  ."
   },
   "keywords": [],
   "author": "",
