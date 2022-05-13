@@ -16,7 +16,6 @@ function getLargerNum(n) {
       break;
     }
   }
-  console.log('target: ', target);
 
   if (target === null) return n;
 
@@ -27,18 +26,19 @@ function getLargerNum(n) {
     }
   }
 
+  // 后面应该是递减的顺序,直接倒序即可
   if (target < arr.length - 2) {
-    for (let i = target + 1; i < arr.length; i++) {
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[j] < arr[i]) {
-          [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-      }
+    let i = target + 1,
+      j = arr.length - 1;
+    while (i < j) {
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+      i++;
+      j--;
     }
   }
 
   return +arr.join('');
 }
 
-const res = getLargerNum(1234321);
+const res = getLargerNum(1243);
 console.log('res: ', res);
