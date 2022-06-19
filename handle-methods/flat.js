@@ -18,7 +18,12 @@ function flatRecursion(arr) {
     return result
 }
 // 上述思路的简化版
-const _flatRecursion = (arr) => [].concat(...arr.map((item) => (Array.isArray(item) ? _flatRecursion(item) : item)))
+const _flatRecursion = (arr) =>
+    [].concat(
+        ...arr.map((item) =>
+            Array.isArray(item) ? _flatRecursion(item) : item
+        )
+    )
 
 /**
  *
@@ -80,3 +85,27 @@ function flatIteration2(arr) {
 
     return result
 }
+
+function flattenD(arr, n = Infinity) {
+    const result = []
+    if (!arr || arr.length === 0) {
+        return result
+    }
+    for (let index = 0; index < arr.length; index++) {
+        const currentNode = arr[index]
+        if (Array.isArray(currentNode)) {
+            if (n > 1) {
+                result.push(...flattenD(currentNode, n - 1))
+            } else {
+                result.push(...currentNode)
+            }
+        } else {
+            result.push(currentNode)
+        }
+    }
+
+    return result
+}
+
+const _res = flattenD(arr, 5)
+console.log('_res: ', _res)
