@@ -2,7 +2,7 @@
   "name": "ui-common",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "kete <jack.ke@ximalaya.com>",
+  "author": "real-jacket <1762982273@qq.com>",
   "homepage": "",
   "license": "ISC",
   "main": "lib/ui-common",
@@ -13,9 +13,6 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-    "registry": "http://xnpm.ximalaya.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git@git.zhlh6.cn:real-jacket/Deep-in-JS.git"
