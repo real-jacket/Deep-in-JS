@@ -14,7 +14,7 @@
     "react-dom": "16.13.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.26",
-    "ua-parser-js": "^0.7.21"
+    "ua-parser-js": "^0.7.33"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
