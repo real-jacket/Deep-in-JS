@@ -1,6 +1,5 @@
-import * as xxa from './even.mjs';
-console.log('xxa: ', xxa);
-const even = xxa.even;
+import { even } from './even.mjs';
+
 debugger;
 var xx = even(0);
 console.log('xx', xx);
